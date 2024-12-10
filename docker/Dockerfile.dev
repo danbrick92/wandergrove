@@ -1,0 +1,20 @@
+FROM darribas/gds_dev:10.0
+
+USER root
+
+# Get code-server
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get update && apt-get install -y curl \
+    && curl -fsSL https://raw.githubusercontent.com/coder/code-server/main/install.sh -o install.sh \
+    && bash install.sh
+
+# Set environment variables for VS Code
+ENV SHELL /bin/bash
+ENV PATH="/root/.vscode-server/bin:/usr/local/bin:${PATH}"
+
+# Install the VS Code extensions
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-toolsai.jupyter
+
+CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "."]
