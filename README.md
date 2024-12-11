@@ -1,30 +1,37 @@
 # Wandergrove
 
-# Getting Started with Development
+## Getting Started (Development)
+### Prerequesites
+1) VS Code Installed
+2) Dev Containers extension installed
+3) Docker Installed
+4) QGIS Installed locally (for visualization of data)
 
-## Prerequesites
-1) Python 3.10 or greater installed on your system
-2) Miniconda - https://www.anaconda.com/download/success
-3) QGIS - https://www.qgis.org/download/ 
-4) VS Code Installed with Jupyer Extension 
+### Build and Run Container
+When you open VS Code, the Dev Containers plugin should automatically detect devcontainer folder and ask to reopen in container. This will automatically build and begin running the dev container. 
 
-## Setup Python Environment
-### 1 - Create Miniconda Environment
-Run: ```conda create -n gis python=3.10 -y```
+This will take a few minutes the first time. 
 
-### 2 - Activate Conda Environment
-Run: ```conda activate gis```
+### Validate
+In the running container, run: ```make test-env```
+If you see "✅ **All libraries passed validation successfully!**" that means it worked!
 
-### 3 - Install Core Libs
-Run: ```conda install -c conda-forge gdal geos fiona shapely rtree pyproj geopandas jupyterlab -y```
+Do the same by opening test.ipynb. Select the gis kernel, and make sure it outputs a series of points at the end.
 
-### 4 - Set GDAL Env Variable
-Go to your Environmental variables.
-Create a new System Variable called GDAL_DATA.
-Set the value to C:\Users\{your-userid}\miniconda3\envs\gis\Library\share\gdal
+## Notes
+## Tangental Tech
 
-### 5 - Validate
-Run: ```python test.py```
-If it outputs the geopandas version, everything is setup correctly.
+If you're building a web app for GIS:
+PostGIS (backend)
+GeoServer (data server)
+Leaflet.js (frontend)
 
-Do the same by opening test.ipynb. Select the gis kernel, and make sure it outputs a map of the world at the end.
+If you're building desktop tools:
+SpatiaLite (local database)
+QGIS (desktop GUI)
+
+If you're doing data analysis:
+GeoPandas + PostGIS
+
+If you want everything cloud-based:
+AWS S3 + Google BigQuery GIS
