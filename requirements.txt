@@ -1,3 +1,4 @@
+bs4
 cartopy
 earthpy
 elevation
@@ -23,6 +24,7 @@ pyproj
 pysal
 rasterio
 requests
+rioxarray
 rtree
 scikit-image
 scikit-learn
