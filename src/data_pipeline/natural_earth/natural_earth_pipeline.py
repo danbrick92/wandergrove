@@ -43,7 +43,15 @@ class NaturalEarthPipeline(ADataPipeline):
         if urls is None:
             urls = scraper.scrape()
             
+        # If all-inclusive zips are included in urls, remove other related ones
+        all_inclusive_zips = ["10m_cultural.zip", "10m_physical.zip", "50m_cultural.zip", "50m_physical.zip", "110m_cultural.zip", "110_physical.zip"]
+        for alz in all_inclusive_zips:
+            size_filter = alz.split("_")[0]
+            type_filter = alz.split("_")[1].split(".")[0]
+            urls = [url for url in urls if not (size_filter in url and type_filter in url and alz not in url)]
+            
         # Generate paths from base path
+        print(f"Downloading {len(urls)} files.")
         downloaded_files: List[str] = []
         for url in urls:
             path_parts = url.split("/download/")[1].split("/")
