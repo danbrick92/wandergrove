@@ -7,6 +7,16 @@ class NaturalEarthConfig:
         "medium": "/50m-",
         "small": "/110m-"
     }
-    contains_filters = [      
+    pipeline_contains_filters = [      
         scraper_sizes['large'],
     ]
+    pipeline_delete_zip_on_extract = False
+    pipeline_all_inclusive_zips = [
+        "10m_cultural.zip", 
+        "10m_physical.zip", 
+        "50m_cultural.zip", 
+        "50m_physical.zip", 
+        "110m_cultural.zip", 
+        "110_physical.zip"
+    ]
+
