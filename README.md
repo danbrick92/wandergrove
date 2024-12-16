@@ -1,4 +1,17 @@
 # Wandergrove
+![icon](public/icon.png)
+
+The goal of this project is to create a fun strategy game that:
+
+1) Raises climate and environmental awareness
+2) Contains several factors that are at odds like overall CO2 emissions, currency, contrarian leaders, etc.
+3) Uses real GIS data to inform new climate or environmental events. 
+4) Can prompt users to have real impact by donating to charity when they perform an action in game.
+    (IE: Reforesting an area might give the user the occassional bump to donate to OneTreePlanted)
+    I'd love for this to be localized if possible.
+
+## Current State
+This is very much a WIP. I am currently exploring different data sources and building out the GIS pipelines
 
 ## Getting Started (Development)
 ### Prerequesites
@@ -18,20 +31,12 @@ If you see "✅ **All libraries passed validation successfully!**" that means it
 
 Do the same by opening test.ipynb. Select the gis kernel, and make sure it outputs a series of points at the end.
 
-## Notes
-## Tangental Tech
+## How-to-Guide
+### Running Data Pipeline
+#### Natural Earth
+Take a look at the arguments specified in 'src/run_data_pipeline.py'
 
-If you're building a web app for GIS:
-PostGIS (backend)
-GeoServer (data server)
-Leaflet.js (frontend)
+When you are ready, run ```python src/run_data_pipeline.py``` with the arguments you need.
+This will scrape Natural Earth's website, download zip files, and extract them. This takes time.
 
-If you're building desktop tools:
-SpatiaLite (local database)
-QGIS (desktop GUI)
-
-If you're doing data analysis:
-GeoPandas + PostGIS
-
-If you want everything cloud-based:
-AWS S3 + Google BigQuery GIS
+Using the notebook 'src/notebooks/natural_earth_map_layering.ipynb', you can visualize and mess with layering.
