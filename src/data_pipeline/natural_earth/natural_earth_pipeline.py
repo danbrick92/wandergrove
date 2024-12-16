@@ -49,7 +49,6 @@ class NaturalEarthPipeline(ADataPipeline):
         
         # Extract
         self.__extract_zips(downloaded_files)
-
     
     def __scrape(
         self, 
