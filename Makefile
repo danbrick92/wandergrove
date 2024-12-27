@@ -1,2 +1,2 @@
 test-env:
-	cd .devcontainer/test && python test.py
+	cd env/test && python test.py

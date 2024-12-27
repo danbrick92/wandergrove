@@ -15,18 +15,19 @@ This is very much a WIP. I am currently exploring different data sources and bui
 
 ## Getting Started (Development)
 ### Prerequesites
-1) VS Code Installed
-2) Dev Containers extension installed
-3) Docker Installed
-4) QGIS Installed locally (for visualization of data)
+1) Miniconda or Anaconda Installed
+2) (optional) QGIS Installed locally (for visualization of data)
 
-### Build and Run Container
-When you open VS Code, the Dev Containers plugin should automatically detect devcontainer folder and ask to reopen in container. This will automatically build and begin running the dev container. 
+### Build Environment
+I have supplied a conda env in ```env/gis_env.yml```. 
+You can import this and run it in your conda env with ```conda env create -f gis_env.yml```
 
-This will take a few minutes the first time. 
+This will take a few minutes to create the conda enviroment.
 
 ### Validate
-In the running container, run: ```make test-env```
+Make sure you have activated the environment. YOu can do this with ```conda activate gis_env```
+
+In the running container, to validate, run: ```make test-env```
 If you see "✅ **All libraries passed validation successfully!**" that means it worked!
 
 Do the same by opening test.ipynb. Select the gis kernel, and make sure it outputs a series of points at the end.
