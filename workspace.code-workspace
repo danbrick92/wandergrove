@@ -1,0 +1,8 @@
+{
+  "folders": [
+    { "path": "src/data_pipeline" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "./venv/bin/python"
+  }
+}

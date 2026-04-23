@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wandergrove_data_pipeline"
+version = "0.0.1"
+description = "Wandergrove's data curation system"
+requires-python = ">=3.14"
+dependencies = [
+    "bs4>=0.0.2",
+    "httpx>=0.28.1",
+    "polars>=1.40.1",
+    "pydantic>=2.13.3",
+    "pydantic-settings>=2.14.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.20.2",
+    "poethepoet>=0.44.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.11",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.mypy]
+python_version = "3.14"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.poe.tasks]
+# Linting
+ruff-check = "ruff check ."
+mypy-check = "mypy ."
+lint    = ["ruff-check", "mypy-check"]
+
+# Formatting of files
+format  = "ruff format ."
+
+# Testing commands
+test    = "pytest -s -vv"
+
+# Run pipelines
+hnp = "python -m hnp.hnp_handler"
