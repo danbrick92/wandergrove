@@ -3,4 +3,4 @@ class ScrapingException(Exception):
 
 
 class MissingPlantsException(Exception):
-    pass 
+    pass

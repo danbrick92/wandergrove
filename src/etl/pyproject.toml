@@ -3,13 +3,15 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "wandergrove_data_pipeline"
+name = "wandergrove_etl"
 version = "0.0.1"
 description = "Wandergrove's data curation system"
 requires-python = ">=3.14"
 dependencies = [
+    "aiofiles>=25.1.0",
     "bs4>=0.0.2",
     "httpx>=0.28.1",
+    "patito>=0.8.6",
     "polars>=1.40.1",
     "pydantic>=2.13.3",
     "pydantic-settings>=2.14.0",
@@ -30,18 +32,21 @@ line-length = 120
 python_version = "3.14"
 warn_return_any = true
 warn_unused_configs = true
+disable_error_code = ["import-untyped"]
 
 [tool.poe.tasks]
 # Linting
 ruff-check = "ruff check ."
 mypy-check = "mypy ."
-lint    = ["ruff-check", "mypy-check"]
+lint = ["ruff-check", "mypy-check"]
 
 # Formatting of files
-format  = "ruff format ."
+format = "ruff format ."
 
 # Testing commands
-test    = "pytest -s -vv"
+test = "pytest -s -vv"
 
-# Run pipelines
-hnp = "python -m hnp.hnp_handler"
+# Run handlers
+sinas-download = "python -m handler --handler_fqcn sinas.sinas_download_handler.SinasDownloadHandler"
+sinas-load = "python -m handler --handler_fqcn sinas.sinas_load_handler.SinasLoadHandler"
+hnp-download = "python -m handler --handler_fqcn hnp.hnp_download_handler.HnpDownloadHandler"

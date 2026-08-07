@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 from pydantic import Field, PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -12,8 +13,10 @@ from hnp.hnp_config import HNPConfig
 
 
 class Config(BaseSettings):
-    datetime_fmt: str = "Y%m%dT%H%M%S"
+    datetime_fmt: str = "%Y%m%dT%H%M%S"
     logging_level: int = logging.INFO
+    data_path: Path = Path("/", "Users", "danielbrickner", "data")
+    raw_data_path: Path = data_path.joinpath("raw")
     hnp: HNPConfig = HNPConfig()
 
     # model_config = SettingsConfigDict(

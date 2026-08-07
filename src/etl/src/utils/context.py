@@ -1,4 +1,3 @@
-from typing import Self
 from logging import Logger
 from pydantic.dataclasses import dataclass
 from utils.config import Config
@@ -11,9 +10,6 @@ class Context:
     logger: Logger
 
     @classmethod
-    def bootstrap(cls) -> Self:
+    def bootstrap(cls) -> "Context":
         config = Config()
-        return Context(
-            config=config,
-            logger=get_json_logger(config.logging_level)
-        )
+        return Context(config=config, logger=get_json_logger(config.logging_level))

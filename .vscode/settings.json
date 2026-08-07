@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/src/etl/venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/src/etl/src"
+  ], 
+  "python.envFile": "${workspaceFolder}/src/etl/.env"
+}
