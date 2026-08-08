@@ -4,6 +4,7 @@ from pydantic import Field, PostgresDsn
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from hnp.hnp_config import HNPConfig
+from sinas.sinas_config import SinasConfig
 
 
 # class DatabaseConfig(BaseSettings):
@@ -18,6 +19,7 @@ class Config(BaseSettings):
     data_path: Path = Path("/", "Users", "danielbrickner", "data")
     raw_data_path: Path = data_path.joinpath("raw")
     hnp: HNPConfig = HNPConfig()
+    sinas: SinasConfig = SinasConfig()
 
     # model_config = SettingsConfigDict(
     #     env_prefix="MYAPP_", # Looks for MYAPP_DEBUG in shell

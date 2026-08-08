@@ -25,3 +25,5 @@ class SinasModel(Model):
     @staticmethod
     def post_validate(df: pl.DataFrame) -> None:
         validate_no_blank_strings(df, 'location')
+        
+        # TODO: Add more validations

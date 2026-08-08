@@ -136,13 +136,3 @@ class HomegrownNationalParkHandler(BasePipelineHandler[None, T_out]):
         path = self.context.config.hnp.base_export_path.joinpath(plant_ecoregions_filename)
         df_unique.write_csv(path)
         self.log(f"Wrote results to: {path}")
-
-
-def main():
-    context = Context.bootstrap()
-    handler = HomegrownNationalParkHandler(context)
-    asyncio.run(handler.run_pipeline())
-
-
-if __name__ == "__main__":
-    main()
