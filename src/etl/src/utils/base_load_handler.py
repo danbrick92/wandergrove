@@ -35,7 +35,7 @@ class BaseLoadHandler(BaseHandler, ABC):
                 if len(not_found) == 0:
                     break
             if len(not_found) == 0:
-                    break
+                break
 
         if len(not_found) > 0:
             raise FileNotFoundError(f"Unable to find files: {[f.filename for f in not_found]}")

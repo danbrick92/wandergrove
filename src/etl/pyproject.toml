@@ -41,7 +41,9 @@ mypy-check = "mypy ."
 lint = ["ruff-check", "mypy-check"]
 
 # Formatting of files
-format = "ruff format ."
+ruff-format = "ruff format ."
+ruff-fix = "ruff check . --fix"
+format = ["ruff-format", "ruff-fix"]
 
 # Testing commands
 test = "pytest -s -vv"

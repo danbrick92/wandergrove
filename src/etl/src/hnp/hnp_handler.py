@@ -5,7 +5,6 @@ It creates a csv file for now - later it can go to Postgres.
 """
 
 from typing import List, TypeAlias, Tuple
-from itertools import islice
 import logging
 import json
 import asyncio
@@ -14,7 +13,6 @@ from pydantic import BaseModel
 import httpx
 from bs4 import BeautifulSoup
 from utils.base_pipeline_handler import BasePipelineHandler
-from utils.context import Context
 from hnp.hnp_keystone_plant import HNPKeystonePlant
 from hnp.hnp_keystone_plant_ecoregion import HNPKeystonePlantEcoregion
 from hnp.hnp_exceptions import ScrapingException, MissingPlantsException
@@ -81,7 +79,7 @@ class HomegrownNationalParkHandler(BasePipelineHandler[None, T_out]):
             raise ScrapingException("Unable to load ecoregions json") from e
         fields = data.get("fields")
         if not fields:
-            raise ScrapingException("Unable to parse ecoregions json") from e
+            raise ScrapingException("Unable to parse ecoregions json")
 
         # Find the ecoregions
         ecoregions: List[Ecoregion] = []

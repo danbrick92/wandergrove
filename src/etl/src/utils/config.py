@@ -1,7 +1,6 @@
 import logging
 from pathlib import Path
-from pydantic import Field, PostgresDsn
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings
 
 from hnp.hnp_config import HNPConfig
 from sinas.sinas_config import SinasConfig

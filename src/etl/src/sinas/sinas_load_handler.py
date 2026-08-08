@@ -2,11 +2,10 @@ from pathlib import Path
 from utils.base_load_handler import BaseLoadHandler
 from utils.raw_object import RawObject
 from sinas.sinas_model import SinasModel
-import polars as pl 
+import polars as pl
 
 
 class SinasLoadHandler(BaseLoadHandler):
-    
     async def _load_df(self, path: Path) -> None:
         df = await self.load_dataframe(path)
         SinasModel.validate(df)
