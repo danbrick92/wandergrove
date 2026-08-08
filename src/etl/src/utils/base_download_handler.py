@@ -10,7 +10,6 @@ class BaseDownloadHandler(BaseHandler, ABC):
         return await self._download()
 
     async def _download(self) -> None:
-        # TODO: This method works if the link is the same - it likely won't be on an update
         raw_objects = self._get_raw_objects()
         source_name = self._get_source_name()
 

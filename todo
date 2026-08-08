@@ -1,0 +1,3 @@
+Download & Load Handler - only support one handler per file - simplifies transform and load functions
+Load Sinas Postgres (use metadata table to determine if there were updates)
+Download handler is weak -> will keep downloading same file, nothing to check for updates or new links, downloads entire file into memory then writes

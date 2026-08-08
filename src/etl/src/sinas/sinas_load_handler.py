@@ -5,12 +5,6 @@ from sinas.sinas_model import SinasModel
 import polars as pl
 
 
-"""
-## TODO
-Download & Load Handler - only support one handler per file - simplifies transform and load functions
-Load into Postgres (use metadata table to determine if there were updates)
-"""
-
 class SinasLoadHandler(BaseLoadHandler):
     async def _load_df(self, path: Path) -> None:
         df = await self.load_dataframe(path)
